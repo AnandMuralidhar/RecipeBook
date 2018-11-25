@@ -27,8 +27,8 @@ public class Post {
 	@Column(name = "POST")
 	String post;
 	
-	@Column(name = "COMMENTS")
-	String comments;
+	@Column(name = "INGREDIENTS")
+	String incredients;
 
 	
 	public Post() {
@@ -36,7 +36,7 @@ public class Post {
 	}
 
 	public Post( String category, String cuisineType, String title, String shortDesc, String post,
-			String comments) {
+			String incredients) {
 		super();
 	
 		this.Category = category;
@@ -44,7 +44,7 @@ public class Post {
 		this.Title = title;
 		this.shortDesc = shortDesc;
 		this.post = post;
-		this.comments = comments;
+		this.incredients = incredients;
 	}
 	
 
@@ -96,12 +96,12 @@ public class Post {
 		this.post = post;
 	}
 
-	public String getComments() {
-		return comments;
+	public String getIncredients() {
+		return incredients;
 	}
 
-	public void setComments(String comments) {
-		this.comments = comments;
+	public void setIncredients(String incredients) {
+		this.incredients = incredients;
 	}
 	
 	
