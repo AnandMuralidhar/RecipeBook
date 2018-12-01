@@ -23,8 +23,9 @@
 <table class="table table-striped" style="width:50%">
   
     <tr th:each="postList : ${postList}">
-      <!-- <th scope="row">1</th> -->
+      <th scope="row">1</th>
        <td th:text="${postList.Title}" th:id ="Title">Title</td>
+       <td th:text="${postList.shortDesc}" th:id ="shortDesc">Short Desc</td>
     </tr>
   </table>        
     </div>

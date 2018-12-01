@@ -1,22 +1,32 @@
 package edu.phoenixRisers.RecipeBook.dao;
 
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "POST")
 public class Post {
 	
-	@EmbeddedId
-	private UserPost userpost;
+//	@EmbeddedId
+//	private UserPost userpost;
+	
+	@Column(name = "USER_ID")
+	int userID;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "POST_ID")
+	int postID;
 	
 	@Column(name = "CATEGORY")
 	String Category;
 	
 	@Column(name = "CUISINE_TYPE")
-	String CuisineType;
+	String Cuisine;
 	
 	@Column(name = "TITLE")
 	String Title;
@@ -40,7 +50,7 @@ public class Post {
 		super();
 	
 		this.Category = category;
-		this.CuisineType = cuisineType;
+		this.Cuisine = cuisineType;
 		this.Title = title;
 		this.shortDesc = shortDesc;
 		this.post = post;
@@ -48,28 +58,47 @@ public class Post {
 	}
 	
 
-	public UserPost getUserpost() {
-		return userpost;
-	}
+//	public UserPost getUserpost() {
+//		return userpost;
+//	}
+//
+//	public void setUserpost(UserPost userpost) {
+//		this.userpost = userpost;
+//	}
 
-	public void setUserpost(UserPost userpost) {
-		this.userpost = userpost;
-	}
-
+	
+	
 	public String getCategory() {
 		return Category;
+	}
+
+	public int getUserID() {
+		return userID;
+	}
+
+	public void setUserID(int userID) {
+		this.userID = userID;
+	}
+
+	public int getPostID() {
+		return postID;
+	}
+
+	public void setPostID(int postID) {
+		this.postID = postID;
 	}
 
 	public void setCategory(String category) {
 		Category = category;
 	}
 
+
 	public String getCuisineType() {
-		return CuisineType;
+		return Cuisine;
 	}
 
 	public void setCuisineType(String cuisineType) {
-		CuisineType = cuisineType;
+		Cuisine = cuisineType;
 	}
 
 	public String getTitle() {

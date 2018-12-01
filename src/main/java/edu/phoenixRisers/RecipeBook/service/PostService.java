@@ -10,6 +10,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+import org.springframework.ui.Model;
 
 import edu.phoenixRisers.RecipeBook.dao.Post;
 import edu.phoenixRisers.RecipeBook.dao.PostDAO;
@@ -63,10 +64,12 @@ public class PostService {
 
 	}
 	
-	public List getAllPosts() {
+	public List<Post> getAllPosts(Model model) {
 		
-		List posts = new ArrayList<>();
+		List<Post> posts = new ArrayList<>();
 		postdao.findAll().forEach(posts::add);
+		
+		model.addAttribute("postList", posts);
 		return posts;
 		
 	}
@@ -92,8 +95,10 @@ public class PostService {
 		String SELECT_SQL = "SELECT * FROM POST where USER_ID = ?";
 		
 		List<Map<String, Object>> rows = jdbcTemplate.queryForList(SELECT_SQL, userID);
-		System.out.println("Title  -----");
 		
+		System.out.println("Title  -----" + jdbcTemplate.queryForList(SELECT_SQL, userID));
+		
+//		System.out.println("ROws " + rows.get(1).toString());
 			for(Map posts: rows) {
 				Post post = new Post();
 				post.setCategory((String)posts.get("CATEGORY"));
