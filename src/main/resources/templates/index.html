@@ -86,6 +86,10 @@
 		<div th:each="postList : ${postList}">
 		<div class="row padding text-left">				
 				<h4><div th:text="${postList.Title}"></div></h2>
+				
+				<h5><div th:text="${postList.incredients}"></div></h5>
+
+				<h5><div th:text="${postList.shortDesc}"></div></h4>
 				<h5><div th:text="${postList.shortDesc}"></div></h4>
 			
 			</div>
@@ -115,7 +119,7 @@
 		</div>
 		<div class="col-md-3">
 			<hr class="light">
-			<h5>Suggetions</h5>
+			<h5>Suggestions</h5>
 			<hr class="light">
 	
 		<div class="col-12">

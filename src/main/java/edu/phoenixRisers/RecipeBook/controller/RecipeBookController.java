@@ -52,9 +52,10 @@ public class RecipeBookController {
 	}
 	
 	@RequestMapping(value = "/user/{userID}", method = RequestMethod.GET)
-	public String getUser(@PathVariable int userID) {
+	public String getUser(@PathVariable int userID, Model model) {
 		
 		User userDetails = userService.getUserDetails(userID);
+		model.addAttribute("userprofile", userDetails);
 		
 		System.out.println("CUST ID FROM DB " + userDetails.getUserName());
 		
@@ -105,7 +106,7 @@ public class RecipeBookController {
 				
 	}
 	
-	@RequestMapping(value = "/getAllPost", method = RequestMethod.GET)
+	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String getAllPosts(Model model) {
 		
 //		System.out.println("In Posts " + postService.getAllPosts(model));
@@ -113,7 +114,7 @@ public class RecipeBookController {
 		List<Post> posts = postService.getAllPosts(model);
 		model.addAttribute("postList", posts);
 		System.out.println("In COntroller **************");
-		return "postlist";
+		return "index";
 	}
 	
 	@RequestMapping(value = "/getPostByID/{userID}", method = RequestMethod.GET)

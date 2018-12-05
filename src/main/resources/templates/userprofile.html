@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -39,9 +39,17 @@
                     </div>
                     <div class="col-md-6">
                         <div class="profile-head">
-                                    <h5>
-                                        Kshiti Ghelani
-                                    </h5>
+                                    
+  	
+  							<div>
+  							<h3 th:text="${userprofile.firstName} + ' ' + ${userprofile.lastName}"> </h3></div>
+  							<!-- <h3 th:text="${userprofile.lastName}"></h3> </div> -->
+  		
+  			
+						</div>
+		
+		
+                                    
                                     <h6>
                                         Web Developer and Designer
                                     </h6>
@@ -91,7 +99,9 @@
                                                 <label>Name</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>Kshiti Ghelani</p>
+                                               <!--  <p>Kshiti Ghelani</p> -->
+                                               <div>
+  							<h3 th:text="${userprofile.firstName}"> </h3></div>
                                             </div>
                                         </div>
                                         <div class="row">
