@@ -112,13 +112,23 @@ CKEDITOR.replace( 'post',
 							<small id="shortdesc" class="form-text text-muted">Description not more than
 							100 chars</small>
 					</div>
-
 					<div class="form-group">
-						<label for="ingredients">Ingredients</label> <input type="text"
-							class="form-control" id="ingredients" name="incredients"
-							placeholder="Enter the list of Ingredients used" >
+						<label for="special_desc">Special Description</label> <input
+							type="text" class="form-control" id="special_desc"
+							name="specialDesc" placeholder="Enter Special Features  "> 
+							<small id="specialdesc" class="form-text text-muted">Description not more than
+							100 chars</small>
 					</div>
 
+					<div class="form-group">
+						<label for="ingredients">Ingredients</label>
+						
+						<textarea id="ingredients" class="form-control" name="incredients" 
+     									 placeholder="Enter the list of Ingredients used" >
+     									</textarea>						
+					
+					
+</div>
 					<div class="form-group">
 						<label for="post">Post</label> 
 						<!-- <textarea
@@ -126,22 +136,41 @@ CKEDITOR.replace( 'post',
 							name="post">
 							</textarea> -->
 							
-								  <div class="form-group">
-     									<textarea name="post" id="post" 
+								  
+     									<textarea name="post" class="form-control" id="post" 
      									 placeholder="Type the procedure" >
      									</textarea>
- 									</div>	
+ 										
 					</div>
 
-					<button type="submit" class="btn btn-primary">Submit</button>
-					<button type="submit" class="btn btn-primary">Cancel</button>
+					<button type="submit" class="btn btn-primary postsubmit">Post</button>
+					<button type="submit" class="btn btn-primary postcancel"><a href="/">Cancel</a></button>
 	
 			</form>
 
 	 	<!-- </div> -->
 	</div>
 
+<style>
+.form-group {
+margin-left: 2%; 
+}
+.form-control {
+width: 98%;
+}
+.postsubmit {
+margin-left: 82%;
+}
+.postcancel {
+float:right;
+margin-right: 2%;
+}
+a, a:hover {
+color: #ffff;
+text-decoration: none;
+}
 
+</style>
 
 
 </body>

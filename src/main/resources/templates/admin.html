@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+ <title>Recipe Book</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link href="newstyle.css" rel="stylesheet">
+  
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script>
+   $(document).ready(function() {
+    //To hide the menu
+     $(".hidediv").click(function () {
+     $(".table").hide("fast",function(){
+    });
+   });    
+});
+ $(document).ready(function() {
+	    //To show the menu
+	     $(".showdiv").click(function () {
+	     $(".table").show("fast",function(){
+	    });
+	   });    
+	});
+  
+</script>
+
+</head>
+<body>
+	<nav class="navbar navbar-default">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+				data-target="#myNavbar"> 
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="img-responsive" href="#"><img src="img/logo1.png"></a>
+			</div>
+			<div class="collapse navbar-collapse" id="MyNavbar">
+				<ul class="nav navbar-nav navbar-right">
+
+					<li class="active">
+						<a href="#">Home</a></li>
+						<li><a href="#">About</a></li>
+						<li><a href="#">ContactUs</a></li>
+			</div>
+		</div>
+	</nav>
+	
+	<div style="position: relative;">
+    <div style="position: absolute; top: 0; right: 0;">
+    <p>
+    <input type="button"  onclick="location.href='/logout'" value="logout" >
+    </p></div>
+</div>
+
+<p  th:text="Welcome+' ' + Admin+ '!!!'"> </p> 
+
+ <p> <button class="hidediv">Hide List</button>
+  <button class="showdiv">Show List</button></p> 
+            
+       <div id="filelist">
+        <table class="table table-striped" style="width:50%">
+            <tr>
+            	<!-- <th>UserID</th> -->
+                <th>Post Title</th>
+                <th>Short Description</th>
+                <th>View</th>
+                <th>Delete</th>
+                
+            </tr>           
+           <tr th:each="postForAdmin : ${postForAdmin}">
+        
+        	<!-- <td th:text="${postForAdmin.userID}" th:id ="file">UserID</td> -->
+        	<td th:text="${postForAdmin.Title}">Title</td>
+        	<td th:text="${postForAdmin.shortDesc}">Short Description</td>
+        	<td th:text="${postForAdmin.shortDesc}">View</td>
+        	
+        	<td> <a th:href="@{/deletePost(postID=${postForAdmin.postID})}">Delete</a></td> 
+        
+           </tr> 
+        </table>
+    </div>
+	
+
+
+
+</body>
+</html>

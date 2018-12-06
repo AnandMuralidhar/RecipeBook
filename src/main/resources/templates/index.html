@@ -60,7 +60,6 @@
      <div class="container-fluid padding">
      <div class="col-md-7">
      <div th:each="postList : ${postList}">
-		
 		<div class="row padding text-left">				
 				
 				<a th:href="@{'/addToFavourite/' + ${postList.postID}}" class="btn btn-secondary pull-right">Add to Favourite</a>
@@ -68,8 +67,15 @@
 				</div></h2>
 				<h4><div th:text="${postList.shortDesc}"></div></h4>
 				<p><h4><div th:text="${postList.post}"></div></h4><p>
-			<a href="#" class="btn btn-primary">Read..</a>
+			<details>
+			<summary>Read More</summary>
+			<p><div th:text="${postList.specialDesc}"></div> </p>
+			<a th:href="@{'/recipe/' + ${postList.postID}}" class="btn btn-primary"><b>Get Recipe</b></a>		
+			 
+			  </details>
 			</div>
+			
+			
 		</div>
 	</div>
 	<div class="col-md-1">

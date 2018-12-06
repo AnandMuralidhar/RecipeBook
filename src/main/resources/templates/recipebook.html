@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Recipe Book</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- <link rel="stylesheet" type="text/css" href="css/styles.css" /> -->
+
+</head>
+<body>
+
+  <div id="splash"></div>
+  <section id="logo">
+    <div class="container text-center wow pulse">
+      <img src="img/logo1.png" alt="logo" />
+      <br />
+      <h1>Recipe Book</h1>
+    </div>
+  </section>
+
+  <!-- Recipes Categories
+  ======================= -->
+  <section id="categories">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h2>Categories</h2>
+        </div>
+      </div>
+      <div class="row wow zoomIn">
+        <!-- Breakfast - Category Item -->
+        <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
+          <div class="category-item text-center">
+            <img src="img/milk.jpg" alt="milk" width="200" height="200" />
+            <br />
+            <h2>Breakfast</h2>
+          </div>
+        </div>
+        <!-- Meat - Category Item -->
+        <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
+          <div class="category-item text-center">
+            <img src="img/omlet.jpg" alt="meat" width="200" height="200" />
+            <br />
+            <h2>Meat</h2>
+          </div>
+        </div>
+        <!-- Seafood - Category Item -->
+        <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
+          <div class="category-item text-center">
+            <img src="img/fish.jpg" alt="fish" width="200" height="200" />
+            <br />
+            <h2>Sea food</h2>
+          </div>
+        </div>
+        <!-- Snacks- Category Item -->
+        <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
+          <div class="category-item text-center">
+            <img src="img/peanuts.jpg" alt="peanuts" width="200" height="200"/>
+            <br />
+            <h2>Snacks</h2>
+          </div>
+        </div>
+        <!-- Spicy - Category Item -->
+        <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
+          <div class="category-item text-center">
+            <img src="img/chilli.jpg" alt="chili" width="200" height="200" />
+            <br />
+            <h2>Spicy</h2>
+          </div>
+        </div>
+        <!-- Vegetarian - Category Item -->
+        <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
+          <div class="category-item text-center">
+            <img src="img/vegan.jpg" alt="vegan" width="200" height="200" />
+            <br />
+            <h2>Vegetarian</h2>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
+          <div class="category-item text-center">
+            <img src="img/dessert.jpg" alt="vegan" width="200" height="200" />
+            <br />
+            <h2>Dessert</h2>
+          </div>
+        </div>
+      </div>
+      <div class="row wow zoomIn">
+        <div class="col-12 text-center show-all">
+          <div class="category-item text-center">
+            <i class="fa fa-cutlery fa-2x" aria-hidden="true"></i>
+            <br />
+            <h2>Show All</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Recipes Items
+  ================== -->
+  <section id="items">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h2><b>Recipes</b></h2>
+        </div>
+      </div>
+      <div class="row">
+        <!-- First recipe item -->
+        <div class="col-lg-4 col-md-6 col-sm-12 wow fadeIn">
+          <div class="recipe-item text-center">
+            <a href="recipe.html">
+              <img src="img/pasta1.jpeg" alt="pasta" width="300" height="300"/>
+            </a>
+            <br />
+            <h3>Pasta</h3>
+          </div>
+        </div>
+        <!-- Second recipe item -->
+        <div class="col-lg-4 col-md-6 col-sm-12 wow fadeIn">
+          <div class="recipe-item text-center">
+            <a href="recipe.html">
+              <img src="img/chipotle.jpg" alt="chipotle" width="300" height="300"/>
+            </a>
+            <br />
+            <h3>Chipotle</h3>
+          </div>
+        </div>
+        <!-- Third recipe item -->
+        <div class="col-lg-4 col-md-6 col-sm-12 wow fadeIn">
+          <div class="recipe-item text-center">
+            <a href="recipe.html">
+              <img src="img/burger.jpg" alt="burger" width="300" height="300"/>
+            </a>
+            <br />
+            <h3>Burger</h3>
+          </div>
+        </div>
+        <!-- Fourth recipe item -->
+        <div class="col-lg-4 col-md-6 col-sm-12 wow fadeIn">
+          <div class="recipe-item text-center">
+            <a href="recipe.html">
+              <img src="img/french_fries.jpg" alt="French Fries" width="300" height="300"/>
+            </a>
+            <br />
+            <h3>French Fries</h3>
+          </div>
+        </div>
+        <!-- Fifth recipe item -->
+        <div class="col-lg-4 col-md-6 col-sm-12 wow fadeIn">
+          <div class="recipe-item text-center">
+            <a href="recipe.html">
+              <img src="img/paneer_tikka.png" alt="Paneer Tikka" width="300" height="300"/>
+            </a>
+            <br />
+            <h3>Paneer Tikka</h3>
+          </div>
+        </div>
+        <!-- Sixth recipe item -->
+        <div class="col-lg-4 col-md-6 col-sm-12 wow fadeIn">
+          <div class="recipe-item text-center">
+            <a href="recipe.html">
+              <img src="img/biryani.jpg" alt="Biryani" width="300" height="300"/>
+            </a>
+            <br />
+            <h3>Biryani</h3>
+          </div>
+        </div>
+        <!-- Seventh recipe item -->
+        <div class="col-lg-4 col-md-6 col-sm-12 wow fadeIn">
+          <div class="recipe-item text-center">
+            <a href="recipe.html">
+              <img src="img/pizza.png" alt="Pizza" width="300" height="300"/>
+            </a>
+            <br />
+            <h3>Pizza</h3>
+          </div>
+        </div>
+        <!-- Eight recipe item -->
+        <div class="col-lg-4 col-md-6 col-sm-12 wow fadeIn">
+          <div class="recipe-item text-center">
+            <a href="recipe.html">
+              <img src="img/samosa.jpg" alt="Samosa" width="300" height="300"/>
+            </a>
+            <br />
+            <h3>samosa</h3>
+          </div>
+        </div>
+        <!-- Ninth recipe item -->
+        <div class="col-lg-4 col-md-6 col-sm-12 wow fadeIn">
+          <div class="recipe-item text-center">
+            <a href="recipe.html">
+              <img src="img/waffle.jpeg" alt="Dessert" width="300" height="300"/>
+            </a>
+            <br />
+            <h3>Waffle</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Website Footer
+  =================== -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <!-- About -->
+        <div class="col-md-6 col-sm-12 text-center">
+          <h2>About</h2>
+          <h2><div class="footer-about">
+            "A recipe book is one that you use daily and what we in our family
+            call 'a living book' — a book that you use all the time,
+            not just read once and discard on the shelf.
+            Recipes are by nature derivative and meant to be shared -
+            that is how they improve, are changed, how new ideas are formed. ”
+          </div></h2>
+        </div>
+        <!-- Author -->
+        <div class="col-md-6 col-sm-12 text-center">
+          <h2><div class="footer-author">
+            Made with
+            <i class="fa fa-heart" aria-hidden="true"></i>
+            love by
+            <a href="http://localhost:8080/index.html" target="_blank">Our Recipe Book</a>.
+          </div></h2>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript files
+  ===================== -->
+  <!-- <script charset="utf-8" src="js/jquery-3.3.1.min.js"></script>
+  <script charset="utf-8" src="js/bootstrap.min.js"></script> -->
+  <!-- <script charset="utf-8" src="js/wow.min.js"></script>
+  <script charset="utf-8" src="js/scripts.js"></script>  -->
+</body>
+</html>

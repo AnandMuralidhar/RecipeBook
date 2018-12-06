@@ -34,6 +34,9 @@ public class Post {
 	@Column(name = "SHORT_DESC")
 	String shortDesc;
 	
+	@Column(name = "SPECIAL_DESC")
+	String specialDesc;
+	
 	@Column(name = "POST")
 	String post;
 	
@@ -45,7 +48,7 @@ public class Post {
 		super();
 	}
 
-	public Post( String category, String cuisineType, String title, String shortDesc, String post,
+	public Post( String category, String cuisineType, String title, String shortDesc, String specialDesc, String post,
 			String incredients) {
 		super();
 	
@@ -111,10 +114,17 @@ public class Post {
 
 	public String getShortDesc() {
 		return shortDesc;
-	}
+	}	
 
 	public void setShortDesc(String shortDesc) {
 		this.shortDesc = shortDesc;
+	}
+	public String getSpecialDesc() {
+		return specialDesc;
+	}	
+
+	public void setSpecialDesc(String specialDesc) {
+		this.specialDesc = specialDesc;
 	}
 
 	public String getPost() {

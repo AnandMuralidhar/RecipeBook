@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 
 import edu.phoenixRisers.RecipeBook.dao.Post;
 import edu.phoenixRisers.RecipeBook.dao.PostDAO;
+import edu.phoenixRisers.RecipeBook.dao.SpecificPostDAO;
 import edu.phoenixRisers.RecipeBook.dao.UserPost;
 
 
@@ -25,6 +26,9 @@ public class PostService {
 	
 	@Autowired
 	private PostDAO postdao;
+	
+	@Autowired
+	private SpecificPostDAO specificpostdao;
 	
 	
 	//----------------Post----------------------//
@@ -206,7 +210,12 @@ public List<Post> getPostByCuisineType(String CuisineType) {
 	return postList;
 	
 }
-
+public Post getSpecificRecipe(int postID) {
+	
+	System.out.println("CuisineType" + postID);
+	return specificpostdao.findById(postID).orElse(null);
+	
+}
 	
 
 	

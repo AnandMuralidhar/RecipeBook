@@ -7,10 +7,12 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import edu.phoenixRisers.RecipeBook.dao.Favourite;
 import edu.phoenixRisers.RecipeBook.dao.Post;
@@ -25,6 +27,24 @@ public class RecipeBookController {
 	
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private PostService postService;
+	
+	@RequestMapping(value = "/recipes", method = RequestMethod.GET)
+	public String recipesPage() {
+		return "recipebook";
+	}
+	
+	@RequestMapping(value = "/recipe/{postID}", method = RequestMethod.GET)
+	public String recipe(@PathVariable int postID, Model model) {
+		
+	//	int userID=2;
+     Post specificrecipe = postService.getSpecificRecipe(postID);
+		model.addAttribute("specificrecipe", specificrecipe );
+		return "recipe";
+				
+	}
 	
 	@RequestMapping(value = "/addUser", method = RequestMethod.POST)
 	public String addUser() {
@@ -41,6 +61,25 @@ public class RecipeBookController {
 		return "/";
 				
 	}
+	
+	
+
+	@RequestMapping(value = "/admin", method = RequestMethod.GET)
+    public String getPostForAdmin(@RequestParam(value="postID", required=false) String postID,Model model, HttpServletRequest request) {
+        
+        System.out.println("Post ID " + postID);
+//        System.out.println("In Posts " + postService.getAllPosts(model));
+//        model.addAttribute("id", 2);
+        List<Post> posts = postService.getAllPosts(model);
+        List<User> users = userService.getAllUsers();
+        
+        model.addAttribute("postForAdmin", posts);
+        model.addAttribute("usersForAdmin", users);
+        System.out.println("In COntroller **************");
+        return "admin";
+    }
+
+	
 	
 	@RequestMapping(value = "/allUsers", method = RequestMethod.GET)
 	public List getAllUsers() {
@@ -66,8 +105,7 @@ public class RecipeBookController {
 	
 	
 	
-	@Autowired
-	private PostService postService;
+	
 	
 	@RequestMapping(value = "/addPost", method = RequestMethod.GET)
 	public String getAddPost(Model model) {
@@ -84,6 +122,7 @@ public class RecipeBookController {
 		System.out.println("From Form " + post.getIncredients());
 		System.out.println("From Form " + post.getPost());
 		System.out.println("From Form " + post.getShortDesc());
+		System.out.println("From Form " + post.getSpecialDesc());
 		System.out.println("From Form " + post.getTitle());
 		
 		
@@ -159,7 +198,7 @@ public class RecipeBookController {
 	public String getPostMyFavourite(Model model) {
 		
 		int userID=1;
-		System.out.println("USer ID is " + userID);
+		System.out.println("Usser ID is " + userID);
 		List<Post> favPosts = favouriteServices.getMyFavourite(userID);
 		
 //		System.out.println("CUST ID FROM DB " + favPosts.get(1));
@@ -169,7 +208,7 @@ public class RecipeBookController {
 
 	}
 	
-	@RequestMapping(value = "/addToFav/{postID}")
+	@RequestMapping(value = "/addToFavourite/{postID}")
 	public String addToFavourite( @PathVariable int postID, Model model) {
 		
 		int userID=2;
@@ -188,13 +227,20 @@ public class RecipeBookController {
 	}
 	
 	
-	@RequestMapping(value = "/deletePost/{postID}", method = RequestMethod.DELETE)
-	public void deletePost(@PathVariable int postID) {
-		
-		postService.deletePost(postID);
-		System.out.println(postID + " Post Deleted SuccessFully");
-				
-	}
+	@RequestMapping(value = "/deletePost")
+    public String  deletePost(@RequestParam(value="postID", required=false) int postID , Model model) {
+        
+        postService.deletePost(postID);
+        System.out.println(postID + " Post Deleted SuccessFully");
+        List<Post> posts = postService.getAllPosts(model);
+        List<User> users = userService.getAllUsers();
+        
+        model.addAttribute("postForAdmin", posts);
+        model.addAttribute("usersForAdmin", users);
+            
+        return "admin";
+    }
+	
 	
 	
 
