@@ -37,6 +37,33 @@ width: 100%;
 
 <!------ Include the above in your HEAD tag ---------->
 
+<nav class="navbar navbar-default">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+				data-target="#myNavbar"> 
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="img-responsive" href="#"><img src="/img/logo1.png"></a>
+			</div>
+			<div class="collapse navbar-collapse" id="MyNavbar">
+				<ul class="nav navbar-nav navbar-right">
+
+					<li class="active">
+						<a href="/">Home</a></li>
+						<li><a href="/recipes">About</a></li>
+						<li><a href="#">ContactUs</a></li>
+						<li><a th:href="@{/user(userID=${id})}">Profile</a></li>
+						<li><a th:href="@{admin/2}">Admin</a></li>
+						<li><a th:href="@{logout}">Logout</a></li>
+		
+			</div>
+		</div>
+	</nav>
+
+
 <div class="container emp-profile">
  <div class="profile-pic">
 

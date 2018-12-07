@@ -47,12 +47,17 @@
 				<ul class="nav navbar-nav navbar-right">
 
 					<li class="active">
-						<a href="#">Home</a></li>
-						<li><a href="#">About</a></li>
+						<a href="/">Home</a></li>
+						<li><a href="/recipes">About</a></li>
 						<li><a href="#">ContactUs</a></li>
+						<li><a th:href="@{/user(userID=${id})}">Profile</a></li>
+						<li><a th:href="@{admin/2}">Admin</a></li>
+						<li><a th:href="@{logout}">Logout</a></li>
+		
 			</div>
 		</div>
 	</nav>
+
 	
 	<div style="position: relative;">
     <div style="position: absolute; top: 0; right: 0;">

@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -94,9 +95,15 @@ public class RecipeBookController {
 	
 
 	@RequestMapping(value = "/admin", method = RequestMethod.GET)
-    public String getPostForAdmin(@RequestParam(value="postID", required=false) String postID,Model model, HttpServletRequest request) {
+    public String getPostForAdmin(@RequestParam(value="postID", required=false) String postID,Model model, HttpServletRequest request, Principal principal) {
         
-        System.out.println("Post ID " + postID);
+		String email=principal.getName();
+		
+		User currentUser = userService.getUserByEmail(email);
+		int userID = currentUser.getUserId();
+		
+		
+		System.out.println("Post ID " + postID);
 //        System.out.println("In Posts " + postService.getAllPosts(model));
 //        model.addAttribute("id", 2);
         List<Post> posts = postService.getAllPosts(model);
@@ -107,6 +114,19 @@ public class RecipeBookController {
         System.out.println("In COntroller **************");
         return "admin";
     }
+	
+	@GetMapping("/logout")
+	public String signout(Model model, HttpServletRequest request) {
+		request.getSession().setAttribute("isLoggedIn", false);
+		request.getSession().setAttribute("postForAdmin", "");
+		request.getSession().setAttribute("usersForAdmin", "");
+		request.getSession().setAttribute("lastName", "");
+		request.getSession().setAttribute("cuisineType", "");
+		request.getSession().setAttribute("default_no_of_guests", "");
+	 
+		
+		return "index";
+	}
 
 	
 	
@@ -224,9 +244,16 @@ public class RecipeBookController {
 	FavouriteServices favouriteServices;
 	
 	@RequestMapping(value = "/myFavourite", method = RequestMethod.GET)
-	public String getPostMyFavourite(Model model) {
+	public String getPostMyFavourite(Model model, Principal principal) {
 		
-		int userID=1;
+		
+		String email=principal.getName();
+		
+		User currentUser = userService.getUserByEmail(email);
+		int userID = currentUser.getUserId();
+		
+		
+		
 		System.out.println("Usser ID is " + userID);
 		List<Post> favPosts = favouriteServices.getMyFavourite(userID);
 		
@@ -238,9 +265,16 @@ public class RecipeBookController {
 	}
 	
 	@RequestMapping(value = "/addToFavourite/{postID}")
-	public String addToFavourite( @PathVariable int postID, Model model) {
+	public String addToFavourite( @PathVariable int postID, Model model, Principal principal) {
 		
-		int userID=2;
+	
+		
+		String email=principal.getName();
+		
+		User currentUser = userService.getUserByEmail(email);
+		int userID = currentUser.getUserId();
+		
+		
 		System.out.println("USer ID is " + postID);
 		System.out.println("USer ID is " + userID);
 		Favourite fav = new Favourite(); 
