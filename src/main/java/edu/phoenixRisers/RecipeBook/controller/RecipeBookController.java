@@ -1,5 +1,6 @@
 package edu.phoenixRisers.RecipeBook.controller;
 
+import java.security.Principal;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -7,7 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,7 +39,6 @@ public class RecipeBookController {
 	@RequestMapping(value = "/recipe/{postID}", method = RequestMethod.GET)
 	public String recipe(@PathVariable int postID, Model model) {
 		
-	//	int userID=2;
      Post specificrecipe = postService.getSpecificRecipe(postID);
 		model.addAttribute("specificrecipe", specificrecipe );
 		return "recipe";
@@ -50,11 +49,11 @@ public class RecipeBookController {
 	public String addUser() {
 		
 		User userDetails = new User(); 
-		userDetails.setFirstName("Thirumalai");
-		userDetails.setLastName("Doss");
+		userDetails.setFirstName("Thirumalai2");
+		userDetails.setLastName("Doss3");
 		userDetails.setUserName("ThiruDoss");
 		userDetails.setBio("Cooking is My Hobbyy");
-		userDetails.setEmail("abc3@gmail.com");
+		userDetails.setEmail("abc322@gmail.com");
 		userDetails.setPassword("12345");
 
 		userService.addUser(userDetails);
@@ -130,15 +129,6 @@ public class RecipeBookController {
 //		Post postDetails = new Post(); 
 		UserPost up = new UserPost();
 		post.setUserID(10);
-//		postDetails.setUserpost(up);
-//		postDetails.setCategory("Veg");
-//		postDetails.setCuisineType("Indian");
-//		postDetails.setTitle("Spicy Onion Rolls");
-//		postDetails.setShortDesc("Indian Flavoured Spicy onion rolls");
-//		postDetails.setPost("As whales go through their annual cycles of summer binge-eating and winter migrations, the wax in their ears changes from light to dark. These changes manifest as alternating bands, which you can see if you slice through the plugs. Much as with tree rings, you can count the bands to estimate a whale’s age. And you can also analyze them to measure the substances that were "
-//				+ "				coursing through the whale’s body when each band was formed. A whale’s earwax, then, is a chronological chemical biography.");
-//		postDetails.setIncredients("incredients");
-
 		postService.addPost(post);
 		
 		return "addRecipe";
@@ -146,10 +136,19 @@ public class RecipeBookController {
 	}
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String getAllPosts(Model model) {
+	public String getAllPosts(Model model, Principal principal) {
+		
 		
 //		System.out.println("In Posts " + postService.getAllPosts(model));
-		model.addAttribute("id", 2);
+		String email=principal.getName();
+		
+		User currentUser = userService.getUserByEmail(email);
+		int userID = currentUser.getUserId();
+		
+		System.out.println("User ID " + currentUser.getUserId());
+		System.out.println("First Name " + currentUser.getFirstName());
+		
+		model.addAttribute("id", userID);
 		List<Post> posts = postService.getAllPosts(model);
 		model.addAttribute("postList", posts);
 		System.out.println("In COntroller **************");
