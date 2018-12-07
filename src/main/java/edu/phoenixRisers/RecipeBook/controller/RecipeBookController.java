@@ -47,6 +47,22 @@ public class RecipeBookController {
 				
 	}
 	
+	@RequestMapping(value = "/admin/{uID}", method = RequestMethod.GET)
+	public String admin(@PathVariable int uID, Model model) {
+		System.out.println("admin" +uID);
+	//	int userID=2;
+		
+   if(uID == 2) {
+	   List<Post> posts = postService.getAllPosts(model);
+		model.addAttribute("postList", posts);
+		return "admin";
+   }
+   List<Post> posts = postService.getAllPosts(model);
+	model.addAttribute("postList", posts);
+   model.addAttribute("adminaccess", "You don't have admin access to view this page!" );
+   
+	return "index";			
+	}
 	
 	@RequestMapping(value = "/addUser", method = RequestMethod.POST)
 	public String addUser() {

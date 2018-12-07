@@ -248,4 +248,13 @@ clear: both;
 }
 
 
+/* Admin */
+.adminaccess {
+	
+	font-size: 24px;
+	color: red;
+	text-align: center;
+}
+
+
 
