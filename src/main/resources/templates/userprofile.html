@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Complete Bootstrap 4 Website Layout</title>
+  <title>RecipeBook MyProfile</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
@@ -16,6 +16,7 @@
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 </head>
 <body>
 
@@ -43,7 +44,7 @@ width: 100%;
                
                     <div class="col-md-4">
                         <div class="profile-img">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt=""/>
+                            <img src="/img/profilePic.png" alt=""/>
                            <br>
                            <br>
                             <div class="file btn btn-lg">
@@ -157,21 +158,21 @@ width: 100%;
                                         </div>
                             </div>
                         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                       <form method="post" th:action="@{/updateuserDetails}" role="form">
+                       <form method="post"  th:action="@{/addUser}" th:object = ${CustomerDetails} role="form">
                                           <div class="row">
                                             <div class="col-md-6">
                                                 <label>First Name</label>
                                             </div>
                                             <div class="col-md-6 uservalue">
-                                        <input type="text" class="form-control" id="firstname"  name="firstname" >
+                                        <input type="text" class="form-control" id="firstName"  name="firstName" >
                                             </div>
                                         </div>
                                          <div class="row">
                                             <div class="col-md-6">
-                                                <label>Second Name</label>
+                                                <label>Last Name</label>
                                             </div>
                                             <div class="col-md-6 uservalue">
-                                        <input type="text" class="form-control" id="secondname"  name="secondname" >
+                                        <input type="text" class="form-control" id="lastName"  name="lastName" >
                                             </div>
                                         </div>
                                         <div class="row">
@@ -179,7 +180,7 @@ width: 100%;
                                                 <label>User Name</label>
                                             </div>
                                             <div class="col-md-6 uservalue">
-                                        <input type="text" class="form-control" id="username"  name="username" >
+                                        <input type="text" class="form-control" id="userName"  name="userName" >
                                             </div>
                                         </div>
                                         <div class="row">
@@ -189,6 +190,9 @@ width: 100%;
                                             <div class="col-md-6 uservalue">
                                                <input type="text" class="form-control" id="bio"  name="bio" >
                                             </div>
+                                        </div>
+                                        <div>
+                                        <button type="submit" class="btn btn-primary"><b>Update Profile</b></button>
                                         </div>
                                 </form>
                             </div>

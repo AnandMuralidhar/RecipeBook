@@ -51,11 +51,15 @@ public class UserService {
 	}
 	
 
-	public void addUser(User userDetails) {
-		userdao.save(userDetails);
-		Connection connection = null;
+	public void updateUser(User userDetails) {
 		
-		String UPDT_SQL = "UPDATE USER SET FIRST_NAME = ?, LAST_NAME = ?,   USER_NAME = ? , BIO = ? where USER_ID=?";
+		
+		Connection connection = null;
+		System.out.println("Add User Update Control" + userDetails.getUserId());
+		System.out.println(userDetails.getFirstName());
+		System.out.println(userDetails.getLastName());
+		
+		String UPDT_SQL = "UPDATE USER SET FIRST_NAME = ?, LAST_NAME = ?, USER_NAME = ? , BIO = ? where USER_ID=?";
 		
 		try{
 		connection = jdbcTemplate.getDataSource().getConnection();

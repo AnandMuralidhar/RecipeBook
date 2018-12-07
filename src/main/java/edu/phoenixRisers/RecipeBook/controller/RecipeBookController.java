@@ -4,6 +4,7 @@ import java.security.Principal;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -51,7 +52,7 @@ public class RecipeBookController {
 		System.out.println("admin" +uID);
 	//	int userID=2;
 		
-   if(uID == 2) {
+   if(uID == 3) {
 	   List<Post> posts = postService.getAllPosts(model);
 		model.addAttribute("postList", posts);
 		return "admin";
@@ -64,18 +65,29 @@ public class RecipeBookController {
 	}
 	
 	@RequestMapping(value = "/addUser", method = RequestMethod.POST)
-	public String addUser() {
+	public String addUser(@ModelAttribute(name="userDetails") User userDetails, Model model,  HttpSession session, Principal principal ) {
 		
-		User userDetails = new User(); 
-		userDetails.setFirstName("Thirumalai2");
+//		User userDetails = new User(); 
+		/*userDetails.setFirstName("Thirumalai2");
 		userDetails.setLastName("Doss3");
 		userDetails.setUserName("ThiruDoss");
 		userDetails.setBio("Cooking is My Hobbyy");
 		userDetails.setEmail("abc322@gmail.com");
 		userDetails.setPassword("12345");
-
-		userService.addUser(userDetails);
-		return "/";
+*/
+		
+//		userDetails.setUserId(userID);
+		
+		String email=principal.getName();
+		
+		User currentUser = userService.getUserByEmail(email);
+		int userID = currentUser.getUserId();
+		
+		userDetails.setUserId(userID);
+		userDetails.setEmail(principal.getName());
+		System.out.println("In Add User page");
+		userService.updateUser(userDetails);
+		return "index";
 				
 	}
 	
@@ -107,8 +119,8 @@ public class RecipeBookController {
 		
 	}
 	
-	@RequestMapping(value = "/user/{userID}", method = RequestMethod.GET)
-	public String getUser(@PathVariable int userID, Model model) {
+	@RequestMapping(value = "/user", method = RequestMethod.GET)
+	public String getUser(@RequestParam(value="userID") int userID, Model model) {
 		
 		User userDetails = userService.getUserDetails(userID);
 		model.addAttribute("userprofile", userDetails);
