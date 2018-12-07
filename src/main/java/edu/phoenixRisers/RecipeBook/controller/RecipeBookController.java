@@ -72,16 +72,7 @@ public class RecipeBookController {
 	@RequestMapping(value = "/addUser", method = RequestMethod.POST)
 	public String addUser(@ModelAttribute(name="userDetails") User userDetails, Model model,  HttpSession session, Principal principal ) {
 		
-//		User userDetails = new User(); 
-		/*userDetails.setFirstName("Thirumalai2");
-		userDetails.setLastName("Doss3");
-		userDetails.setUserName("ThiruDoss");
-		userDetails.setBio("Cooking is My Hobbyy");
-		userDetails.setEmail("abc322@gmail.com");
-		userDetails.setPassword("12345");
-*/
-		
-//		userDetails.setUserId(userID);
+
 		
 		String email=principal.getName();
 		
@@ -93,6 +84,10 @@ public class RecipeBookController {
 		System.out.println("In Add User page");
 		userService.updateUser(userDetails);
 		  model.addAttribute("userID", userID );
+		  
+		  List<Post> posts = postService.getAllPosts(model);
+			model.addAttribute("postList", posts);
+			
 		return "index";
 				
 	}
@@ -145,7 +140,11 @@ public class RecipeBookController {
 	}
 	
 	@RequestMapping(value = "/user", method = RequestMethod.GET)
-	public String getUser(@RequestParam(value="userID") int userID, Model model) {
+	public String getUser(Principal principal,  Model model) {
+		
+		String email=principal.getName();
+		User currentUser = userService.getUserByEmail(email);
+		int userID = currentUser.getUserId();
 		
 		User userDetails = userService.getUserDetails(userID);
 		model.addAttribute("userprofile", userDetails);
@@ -169,7 +168,15 @@ public class RecipeBookController {
 
 	
 	@RequestMapping(value = "/addPost", method = RequestMethod.POST)
-	public String addPost(@ModelAttribute("AddPost") Post post,@RequestParam(value="userID") int userID, HttpServletRequest httprequests, Model model) {
+	public String addPost(@ModelAttribute("AddPost") Post post, HttpServletRequest httprequests, Model model, Principal principal) {
+		
+		
+		String email=principal.getName();
+		
+		User currentUser = userService.getUserByEmail(email);
+		int userID = currentUser.getUserId();
+		
+		
 		System.out.println("entered post");
 		System.out.println("From Form " + post.getCategory());
 		System.out.println("From Form " + post.getCuisineType());
@@ -248,21 +255,25 @@ public class RecipeBookController {
 	@Autowired
 	FavouriteServices favouriteServices;
 	
-	@RequestMapping(value = "/myFavourite", method = RequestMethod.GET)
-<<<<<<< HEAD
-	public String getPostMyFavourite(Model model, Principal principal) {
+	
+
+/*	public String getPostMyFavourite(Model model, Principal principal) {
 		
 		
 		String email=principal.getName();
 		
 		User currentUser = userService.getUserByEmail(email);
 		int userID = currentUser.getUserId();
+		return "";
+	}*/
 		
+	@RequestMapping(value = "/myFavourite", method = RequestMethod.GET)
+	public String getPostMyFavourite(Model model, Principal principal) {
+
+		String email=principal.getName();
 		
-=======
-	public String getPostMyFavourite(@RequestParam(value="userID") int userID, Model model) {
->>>>>>> 7559aa78897dcb312eea32d9628be4411478c476
-		
+		User currentUser = userService.getUserByEmail(email);
+		int userID = currentUser.getUserId();
 		System.out.println("Usser ID is " + userID);
 		List<Post> favPosts = favouriteServices.getMyFavourite(userID);
 		
@@ -274,23 +285,29 @@ public class RecipeBookController {
 
 	}
 	
+//	@RequestMapping(value = "/addToFavourite/{postID}")
+//	public String addToFavourite( @PathVariable int postID, Model model, Principal principal) {
+//		
+//	
+//		
+//		String email=principal.getName();
+//		
+//		User currentUser = userService.getUserByEmail(email);
+//		int userID = currentUser.getUserId();
+//		
+//		return "index";
+//	}
 	@RequestMapping(value = "/addToFavourite/{postID}")
-<<<<<<< HEAD
 	public String addToFavourite( @PathVariable int postID, Model model, Principal principal) {
 		
-	
+		//int userID=2;
 		
 		String email=principal.getName();
 		
 		User currentUser = userService.getUserByEmail(email);
 		int userID = currentUser.getUserId();
 		
-		
-=======
-	public String addToFavourite( @PathVariable int postID,@RequestParam(value="userID") int userID, Model model) {
-		
-		//int userID=2;
->>>>>>> 7559aa78897dcb312eea32d9628be4411478c476
+
 		System.out.println("USer ID is " + postID);
 		System.out.println("USer ID is " + userID);
 		Favourite fav = new Favourite(); 
