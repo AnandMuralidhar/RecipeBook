@@ -48,29 +48,23 @@
 
 					<li class="active">
 						<a href="/">Home</a></li>
-						<li><a href="/recipes">About</a></li>
-						<li><a href="#">ContactUs</a></li>
-						<li><a th:href="@{/user(userID=${id})}">Profile</a></li>
+
+						<li><a th:href="@{/recipes(userID=${userID})}">About</a></li>
+						<li><a th:href="@{/user}">Profile</a></li>
 						<li><a th:href="@{/admincheck(userID=${userID})}">Admin</a></li>
 						<li><a th:href="@{logout}">Logout</a></li>
-						
-<!-- 					<li><a th:href="@{/recipes(userID=${userID})}">About</a></li>
-						<li><a th:href="@{/user(userID=${userID})}">Profile</a></li>
-						<li><a th:href="@{/admincheck(userID=${userID})}">Admin</a></li>
-						<li><a th:href="@{/user(userID=${userID})}">Logout</a></li>
- -->
- 			</ul>
- 			</div>
+			</ul>	
+			</div>
 		</div>
 	</nav>
 
 	
-	<div style="position: relative;">
+<!--  	<div style="position: relative;">
     <div style="position: absolute; top: 0; right: 0;">
     <p>
     <input type="button"  onclick="location.href='/logout'" value="logout" >
     </p></div>
-</div>
+</div> -->
 
 <p  th:text="Welcome+' ' + Admin+ '!!!'"> </p> 
 

@@ -29,11 +29,12 @@
 
 					<li class="active">
 						<a href="/">Home</a></li>
+
 						<li><a th:href="@{/recipes(userID=${userID})}">About</a></li>
-						<li><a th:href="@{/user(userID=${userID})}">Profile</a></li>
+						<li><a th:href="@{/user}">Profile</a></li>
 						<li><a th:href="@{/admincheck(userID=${userID})}">Admin</a></li>
-					<li><a th:href="@{/user(userID=${userID})}">Logout</a></li>
-		
+						<li><a th:href="@{logout}">Logout</a></li>
+			</ul>	
 			</div>
 		</div>
 	</nav>
@@ -73,6 +74,7 @@
 				<h4><div th:text="${postList.shortDesc}"></div></h4>
 				<p><h4><div th:text="${postList.post}"></div></h4><p>
 			<a href="#" class="btn btn-primary">Read..</a>
+		
 			</div>
 		</div>
 	</div>

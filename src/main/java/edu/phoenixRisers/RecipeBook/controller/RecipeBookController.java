@@ -57,6 +57,10 @@ public class RecipeBookController {
 		
    if(userID == 3 || userID == 7) {
 	   List<Post> posts = postService.getAllPosts(model);
+       List<User> users = userService.getAllUsers();
+       
+       model.addAttribute("postForAdmin", posts);
+       model.addAttribute("usersForAdmin", users);
 		model.addAttribute("postList", posts);
 		model.addAttribute("userID", userID );
 		return "admin";
@@ -334,7 +338,7 @@ public class RecipeBookController {
         
         model.addAttribute("postForAdmin", posts);
         model.addAttribute("usersForAdmin", users);
-            
+        model.addAttribute("userID", userID);   
         return "admin";
     }
 	
