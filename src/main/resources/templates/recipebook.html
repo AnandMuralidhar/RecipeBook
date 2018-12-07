@@ -9,18 +9,32 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <!-- <link rel="stylesheet" type="text/css" href="css/styles.css" /> -->
-
+<link href="/newstyle.css" rel="stylesheet">
 </head>
 <body>
 
-  <div id="splash"></div>
-  <section id="logo">
-    <div class="container text-center wow pulse">
-      <img src="img/logo1.png" alt="logo" />
-      <br />
-      <h1>Recipe Book</h1>
-    </div>
-  </section>
+ <nav class="navbar navbar-default">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+				data-target="#myNavbar"> 
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="img-responsive" href="#"><img src="img/logo1.png"></a>
+			</div>
+			<div class="collapse navbar-collapse" id="MyNavbar">
+				<ul class="nav navbar-nav navbar-right">
+
+					<li class="active">
+						<a href="/">Home</a></li>
+						<li><a href="/recipes">About</a></li>
+						<li><a href="#">ContactUs</a></li>
+						<li><a href="#">Profile</a></li>
+			</div>
+		</div>
+	</nav>
 
   <!-- Recipes Categories
   ======================= -->
@@ -226,7 +240,7 @@
             Made with
             <i class="fa fa-heart" aria-hidden="true"></i>
             love by
-            <a href="http://localhost:8080/index.html" target="_blank">Our Recipe Book</a>.
+            <a href="/index.html" target="_blank">Our Recipe Book</a>.
           </div></h2>
         </div>
       </div>

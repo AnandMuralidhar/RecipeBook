@@ -211,8 +211,50 @@ Extra (xl) large devices (large desktops, 1200px and up)
 
 
 
+/* Recipebook */
+.footer-author {
+	padding-top: 24%;
+}
 
 
+/* Dynamic Recipe page */
+.dynamic-recipe {
+width: 100%;
+}
+.recipetitle{  
+margin-left: 32%;
+float:left;   
+}
+.recipetext {
+float:left;
+margin: 1%;
+font-size: 19px;
+}
+.ingredients-hldr {
+clear:both;
+}
+img {
+width: 100%;
+height: 50%;
+}
+a{
+padding: 1%;
+}
+.social-icons {
+clear: both;
+    width: 20%;
+    float: right;
+    margin-right: 5%;
+}
+
+
+/* Admin */
+.adminaccess {
+	
+	font-size: 24px;
+	color: red;
+	text-align: center;
+}
 
 
 

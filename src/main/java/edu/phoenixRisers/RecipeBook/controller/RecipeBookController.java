@@ -40,9 +40,27 @@ public class RecipeBookController {
 	public String recipe(@PathVariable int postID, Model model) {
 		
      Post specificrecipe = postService.getSpecificRecipe(postID);
+     System.out.println("recipe");
 		model.addAttribute("specificrecipe", specificrecipe );
 		return "recipe";
 				
+	}
+	
+	@RequestMapping(value = "/admin/{uID}", method = RequestMethod.GET)
+	public String admin(@PathVariable int uID, Model model) {
+		System.out.println("admin" +uID);
+	//	int userID=2;
+		
+   if(uID == 2) {
+	   List<Post> posts = postService.getAllPosts(model);
+		model.addAttribute("postList", posts);
+		return "admin";
+   }
+   List<Post> posts = postService.getAllPosts(model);
+	model.addAttribute("postList", posts);
+   model.addAttribute("adminaccess", "You don't have admin access to view this page!" );
+   
+	return "index";			
 	}
 	
 	@RequestMapping(value = "/addUser", method = RequestMethod.POST)
@@ -115,7 +133,7 @@ public class RecipeBookController {
 	
 	@RequestMapping(value = "/addPost", method = RequestMethod.POST)
 	public String addPost(@ModelAttribute("AddPost") Post post, HttpServletRequest httprequests, Model model) {
-		
+		System.out.println("entered post");
 		System.out.println("From Form " + post.getCategory());
 		System.out.println("From Form " + post.getCuisineType());
 		System.out.println("From Form " + post.getIncredients());
