@@ -26,14 +26,15 @@
 				<ul class="nav navbar-nav navbar-right">
 
 					<li class="active">
-						<a href="#">Home</a></li>
-						<li><a href="#">About</a></li>
+						<a href="/">Home</a></li>
+						<li><a href="/recipes">About</a></li>
 						<li><a href="#">ContactUs</a></li>
-						<li><a href="#">Recipes</a></li>
+						<li><a href="#">Profile</a></li>
+					
 			</div>
 		</div>
 	</nav>
-	
+	<p><div th:text="${adminaccess}"></div></p>
 		<div class="container text-center">
 		<div class="row">
 			<div class="col-sm-4">
@@ -66,11 +67,11 @@
 				<h2><div th:text="${postList.Title}">
 				</div></h2>
 				<h4><div th:text="${postList.shortDesc}"></div></h4>
-				<p><h4><div th:text="${postList.post}"></div></h4><p>
+				
 			<details>
 			<summary>Read More</summary>
 			<p><div th:text="${postList.specialDesc}"></div> </p>
-			<a th:href="@{'/recipe/' + ${postList.postID}}" class="btn btn-primary"><b>Get Recipe</b></a>		
+			<a th:href="@{'/recipe/' + ${postList.postID}}" class="btn btn-primary"><b>View Recipe</b></a>		
 			 
 			  </details>
 			</div>
@@ -96,7 +97,7 @@
 				<h5><div th:text="${postList.incredients}"></div></h5>
 
 				<h5><div th:text="${postList.shortDesc}"></div></h4>
-				<h5><div th:text="${postList.shortDesc}"></div></h4>
+				
 			
 			</div>
 		</div>

@@ -41,10 +41,12 @@ public class RecipeBookController {
 		
 	//	int userID=2;
      Post specificrecipe = postService.getSpecificRecipe(postID);
+     System.out.println("recipe");
 		model.addAttribute("specificrecipe", specificrecipe );
 		return "recipe";
 				
 	}
+	
 	
 	@RequestMapping(value = "/addUser", method = RequestMethod.POST)
 	public String addUser() {
@@ -116,7 +118,7 @@ public class RecipeBookController {
 	
 	@RequestMapping(value = "/addPost", method = RequestMethod.POST)
 	public String addPost(@ModelAttribute("AddPost") Post post, HttpServletRequest httprequests, Model model) {
-		
+		System.out.println("entered post");
 		System.out.println("From Form " + post.getCategory());
 		System.out.println("From Form " + post.getCuisineType());
 		System.out.println("From Form " + post.getIncredients());

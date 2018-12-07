@@ -2,9 +2,60 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Recipe</title>
+ <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link href="/newstyle.css" rel="stylesheet">
+  <style>
+  li {
+  list-style: none;
+  }
+  </style>
+  <script>
+function popup(url)
+{
+ params  = 'width='+screen.width;
+ params += ', height=' + screen.height;
+ params +='resizable = yes'
+ //params += ', top=0, left=0'
+ params += ', fullscreen=yes';
+
+
+ newwin=window.open(url,'windowname4', params);
+ if (window.focus) {newwin.focus()}
+ return false;
+}
+
+function openwindow(type) {
+    if(type=='facebook')
+
+    {
+    	var url1 = location.href;
+        url= "https://www.facebook.com/sharer/sharer.php?u="+url1;
+
+    }
+
+    else if(type=='twitter')
+
+    {
+      
+var url1 = location.href;
+        url = "https://twitter.com/intent/tweet?url=" + url1 ;
+
+    }
+
+    popup(url);
+
+}
+</script>
+ 
 </head>
 <body>
+
 <nav class="navbar navbar-default">
 		<div class="container">
 			<div class="navbar-header">
@@ -14,25 +65,76 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="img-responsive" href="#"><img src="img/logo1.png"></a>
+				<a class="img-responsive" href="#"><img src="/img/logo1.png"></a>
 			</div>
 			<div class="collapse navbar-collapse" id="MyNavbar">
 				<ul class="nav navbar-nav navbar-right">
 
 					<li class="active">
-						<a href="#">Home</a></li>
-						<li><a href="#">About</a></li>
+						<a href="/">Home</a></li>
+						<li><a href="/recipes">About</a></li>
 						<li><a href="#">ContactUs</a></li>
-						<li><a href="#">Recipes</a></li>
+						<li><a href="#">Profile</a></li>
 			</div>
 		</div>
 	</nav>
-<h1><div th:text="${specificrecipe.Title}"></h1>
-<h4><div th:text="${specificrecipe.shortDesc}"></div></h4>
-<div th:text="${specificrecipe.Category}"></div>
-<div th:text="${specificrecipe.cuisineType}"></div>
-<div th:text="${specificrecipe.post}"></div>
+	 <img src="/img/recipebanner.png" alt="recipe"/>
+<div class="dynamic-recipe">
+                <div class="recipetitle">
+                    <h1>
+                        <div th:text="${specificrecipe.Title}"></div>
+                    </h1>
+                </div>
+                <div class="recipetext">
+                    <ul>
+
+                            <li><div th:text="${specificrecipe.shortDesc}"></div></li>
+                                                    <li> <div th:text="${specificrecipe.Category}"></div></li>
+                                                    <li><div th:text="${specificrecipe.cuisineType}"></div></li>
+                    </ul>
+                </div>
+            </div>	
+            
+  <div class="social-icons">
+                 
+                    
+                        <a onclick="openwindow('facebook');" href="#"><span class="fa fa-facebook-square" style="font-size:33px"></span></a>
+
+                        <a onclick="openwindow('twitter');" href="#"><span class="fa fa-twitter" style="font-size:33px"></span></a>
+
+                   </div>         
+ <section class="ingredients-hldr">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-sm-6 col-md-7 col-lg-6">
+                    <div class="ingredients">
+              
+
+                        <div class="ingredients-content">
+                            <h2>Ingredients</h2>
+                                                  
+           
 <div th:text="${specificrecipe.incredients}"></div>
-				
+
+                            
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-5 col-lg-6">
+                    <div class="preparation">
+                        <div class="preparation-content">
+                            <h2>PREPARATION</h2>
+ <div th:text="${specificrecipe.post}"></div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>           			
 </body>
 </html>
