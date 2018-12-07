@@ -27,11 +27,10 @@
 
 					<li class="active">
 						<a href="/">Home</a></li>
-						<li><a href="/recipes">About</a></li>
-						<li><a href="#">ContactUs</a></li>
-						<li><a th:href="@{/user(userID=${id})}">Profile</a></li>
-						<li><a th:href="@{admin/2}">Admin</a></li>
-						<li><a th:href="@{admin/2}">Logout</a></li>
+						<li><a th:href="@{/recipes(userID=${userID})}">About</a></li>
+						<li><a th:href="@{/user(userID=${userID})}">Profile</a></li>
+						<li><a th:href="@{/admincheck(userID=${userID})}">Admin</a></li>
+						<li><a th:href="@{/user(userID=${userID})}">Logout</a></li>
 		
 			</div>
 		</div>
@@ -63,9 +62,8 @@
      <div class="container-fluid padding">
      <div class="col-md-7">
      <div th:each="postList : ${postList}">
-		<div class="row padding text-left">				
-				
-				<a th:href="@{'/addToFavourite/' + ${postList.postID}}" class="btn btn-secondary pull-right">Add to Favourite</a>
+		<div class="row padding text-left">							
+				<a th:href="@{'/addToFavourite/' + ${postList.postID}(userID=${userID})}" class="btn btn-secondary pull-right">Add to Favourite</a>
 				<h2><div th:text="${postList.Title}">
 				</div></h2>
 				<h4><div th:text="${postList.shortDesc}"></div></h4>
@@ -73,7 +71,7 @@
 			<details>
 			<summary>Read More</summary>
 			<p><div th:text="${postList.specialDesc}"></div> </p>
-			<a th:href="@{'/recipe/' + ${postList.postID}}" class="btn btn-primary"><b>View Recipe</b></a>		
+			<a th:href="@{'/recipe/' + ${postList.postID}(userID=${userID})}" class="btn btn-primary"><b>View Recipe</b></a>		
 			 
 			  </details>
 			</div>
@@ -87,8 +85,8 @@
 	
 	<div class="col-md-4">
 	
-		<a th:href="@{/addPost}" class="btn btn-primary"><b>Post a Recipe</b></a>
-		<a th:href="@{/myFavourite}" class="btn btn-primary"><b>My Favourite</b></a>
+		<a th:href="@{/addPost(userID=${userID})}" class="btn btn-primary"><b>Post a Recipe</b></a>
+		<a th:href="@{/myFavourite(userID=${userID})}" class="btn btn-primary"><b>My Favourite</b></a>
 		<h2>Popular Posts</h2><h2></h2>
 		
 		

@@ -29,9 +29,11 @@
 
 					<li class="active">
 						<a href="/">Home</a></li>
-						<li><a href="#">About</a></li>
-						<li><a href="#">ContactUs</a></li>
-						<li><a href="#">Recipes</a></li>
+						<li><a th:href="@{/recipes(userID=${userID})}">About</a></li>
+						<li><a th:href="@{/user(userID=${userID})}">Profile</a></li>
+						<li><a th:href="@{/admincheck(userID=${userID})}">Admin</a></li>
+					<li><a th:href="@{/user(userID=${userID})}">Logout</a></li>
+		
 			</div>
 		</div>
 	</nav>

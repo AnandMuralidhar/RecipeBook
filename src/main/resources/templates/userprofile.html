@@ -17,9 +17,6 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-</head>
-<body>
-
 <style> 
 .emp-profile {
 width: 100%;
@@ -34,8 +31,36 @@ width: 100%;
     margin-top: 9%;
 }
 </style>
+</head>
+<body>
+
+
 
 <!------ Include the above in your HEAD tag ---------->
+<nav class="navbar navbar-default">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+				data-target="#myNavbar"> 
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="img-responsive" href="#"><img src="/img/logo1.png"></a>
+			</div>
+			<div class="collapse navbar-collapse" id="MyNavbar">
+				<ul class="nav navbar-nav navbar-right">
+
+					<li class="active">
+						<a href="/">Home</a></li>
+						<li><a th:href="@{/recipes(userID=${userID})}">About</a></li>
+						<li><a th:href="@{/user(userID=${userID})}">Profile</a></li>
+						<li><a th:href="@{/admincheck(userID=${userID})}">Admin</a></li>
+						<li><a th:href="@{/user(userID=${userID})}">Logout</a></li>
+		
+			</div>
+		</div>
+	</nav>
 
 <div class="container emp-profile">
  <div class="profile-pic">
