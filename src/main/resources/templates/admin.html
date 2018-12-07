@@ -48,11 +48,18 @@
 
 					<li class="active">
 						<a href="/">Home</a></li>
+<<<<<<< HEAD
 						<li><a href="/recipes">About</a></li>
 						<li><a href="#">ContactUs</a></li>
 						<li><a th:href="@{/user(userID=${id})}">Profile</a></li>
 						<li><a th:href="@{admin/2}">Admin</a></li>
 						<li><a th:href="@{logout}">Logout</a></li>
+=======
+					<li><a th:href="@{/recipes(userID=${userID})}">About</a></li>
+						<li><a th:href="@{/user(userID=${userID})}">Profile</a></li>
+						<li><a th:href="@{/admincheck(userID=${userID})}">Admin</a></li>
+						<li><a th:href="@{/user(userID=${userID})}">Logout</a></li>
+>>>>>>> 7559aa78897dcb312eea32d9628be4411478c476
 		
 			</div>
 		</div>
@@ -88,8 +95,8 @@
         	<td th:text="${postForAdmin.shortDesc}">Short Description</td>
         	<td th:text="${postForAdmin.shortDesc}">View</td>
         	
-        	<td> <a th:href="@{/deletePost(postID=${postForAdmin.postID})}">Delete</a></td> 
-        
+        	<td> <a th:href="@{'/deletePost/' + ${postForAdmin.postID}(userID=${userID})}">Delete</a></td> 
+
            </tr> 
         </table>
     </div>

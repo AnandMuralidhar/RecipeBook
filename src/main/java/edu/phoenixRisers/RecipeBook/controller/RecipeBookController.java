@@ -34,31 +34,35 @@ public class RecipeBookController {
 	private PostService postService;
 	
 	@RequestMapping(value = "/recipes", method = RequestMethod.GET)
-	public String recipesPage() {
+	public String recipesPage(@RequestParam(value="userID") int userID, Model model) {
+		model.addAttribute("userID", userID );
 		return "recipebook";
 	}
 	
 	@RequestMapping(value = "/recipe/{postID}", method = RequestMethod.GET)
-	public String recipe(@PathVariable int postID, Model model) {
+	public String recipe(@PathVariable int postID,@RequestParam(value="userID") int userID, Model model) {
 		
      Post specificrecipe = postService.getSpecificRecipe(postID);
      System.out.println("recipe");
+     model.addAttribute("userID", userID );
 		model.addAttribute("specificrecipe", specificrecipe );
 		return "recipe";
 				
 	}
 	
-	@RequestMapping(value = "/admin/{uID}", method = RequestMethod.GET)
-	public String admin(@PathVariable int uID, Model model) {
-		System.out.println("admin" +uID);
+	@RequestMapping(value = "/admincheck", method = RequestMethod.GET)
+	public String admin(@RequestParam(value="userID") int userID, Model model) {
+		System.out.println("admin" +userID);
 	//	int userID=2;
 		
-   if(uID == 3) {
+   if(userID == 3 || userID == 7) {
 	   List<Post> posts = postService.getAllPosts(model);
 		model.addAttribute("postList", posts);
+		model.addAttribute("userID", userID );
 		return "admin";
    }
    List<Post> posts = postService.getAllPosts(model);
+   model.addAttribute("userID", userID );
 	model.addAttribute("postList", posts);
    model.addAttribute("adminaccess", "You don't have admin access to view this page!" );
    
@@ -88,6 +92,7 @@ public class RecipeBookController {
 		userDetails.setEmail(principal.getName());
 		System.out.println("In Add User page");
 		userService.updateUser(userDetails);
+		  model.addAttribute("userID", userID );
 		return "index";
 				
 	}
@@ -146,7 +151,7 @@ public class RecipeBookController {
 		model.addAttribute("userprofile", userDetails);
 		
 		System.out.println("CUST ID FROM DB " + userDetails.getUserName());
-		
+		  model.addAttribute("userID", userID );
 		return "userprofile";
 		
 	}
@@ -164,7 +169,7 @@ public class RecipeBookController {
 
 	
 	@RequestMapping(value = "/addPost", method = RequestMethod.POST)
-	public String addPost(@ModelAttribute("AddPost") Post post, HttpServletRequest httprequests, Model model) {
+	public String addPost(@ModelAttribute("AddPost") Post post,@RequestParam(value="userID") int userID, HttpServletRequest httprequests, Model model) {
 		System.out.println("entered post");
 		System.out.println("From Form " + post.getCategory());
 		System.out.println("From Form " + post.getCuisineType());
@@ -180,7 +185,7 @@ public class RecipeBookController {
 		UserPost up = new UserPost();
 		post.setUserID(10);
 		postService.addPost(post);
-		
+		  model.addAttribute("userID", userID );
 		return "addRecipe";
 				
 	}
@@ -198,7 +203,7 @@ public class RecipeBookController {
 		System.out.println("User ID " + currentUser.getUserId());
 		System.out.println("First Name " + currentUser.getFirstName());
 		
-		model.addAttribute("id", userID);
+		model.addAttribute("userID", userID);
 		List<Post> posts = postService.getAllPosts(model);
 		model.addAttribute("postList", posts);
 		System.out.println("In COntroller **************");
@@ -244,6 +249,7 @@ public class RecipeBookController {
 	FavouriteServices favouriteServices;
 	
 	@RequestMapping(value = "/myFavourite", method = RequestMethod.GET)
+<<<<<<< HEAD
 	public String getPostMyFavourite(Model model, Principal principal) {
 		
 		
@@ -253,18 +259,23 @@ public class RecipeBookController {
 		int userID = currentUser.getUserId();
 		
 		
+=======
+	public String getPostMyFavourite(@RequestParam(value="userID") int userID, Model model) {
+>>>>>>> 7559aa78897dcb312eea32d9628be4411478c476
 		
 		System.out.println("Usser ID is " + userID);
 		List<Post> favPosts = favouriteServices.getMyFavourite(userID);
 		
 //		System.out.println("CUST ID FROM DB " + favPosts.get(1));
 		model.addAttribute("postList", favPosts);
+		model.addAttribute("userID", userID);
 		return "postlist";
 		
 
 	}
 	
 	@RequestMapping(value = "/addToFavourite/{postID}")
+<<<<<<< HEAD
 	public String addToFavourite( @PathVariable int postID, Model model, Principal principal) {
 		
 	
@@ -275,6 +286,11 @@ public class RecipeBookController {
 		int userID = currentUser.getUserId();
 		
 		
+=======
+	public String addToFavourite( @PathVariable int postID,@RequestParam(value="userID") int userID, Model model) {
+		
+		//int userID=2;
+>>>>>>> 7559aa78897dcb312eea32d9628be4411478c476
 		System.out.println("USer ID is " + postID);
 		System.out.println("USer ID is " + userID);
 		Favourite fav = new Favourite(); 
@@ -285,13 +301,14 @@ public class RecipeBookController {
 //		String post = getAllPosts(model);
 		List<Post> posts = postService.getAllPosts(model);
 		model.addAttribute("postList", posts);
+		model.addAttribute("userID", userID);
 		return "postlist";
 				
 	}
 	
 	
-	@RequestMapping(value = "/deletePost")
-    public String  deletePost(@RequestParam(value="postID", required=false) int postID , Model model) {
+	@RequestMapping(value = "/deletePost/{postID}")
+    public String  deletePost(@PathVariable int postID,@RequestParam(value="userID") int userID , Model model) {
         
         postService.deletePost(postID);
         System.out.println(postID + " Post Deleted SuccessFully");

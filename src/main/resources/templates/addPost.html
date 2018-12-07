@@ -20,19 +20,23 @@
 		<div class="container">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse"
-					data-target="#myNavbar">
-					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
+				data-target="#myNavbar"> 
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
 				</button>
-				<a class="img-responsive" href="#"><img src="img/logo1.png"></a>
+				<a class="img-responsive" href="#"><img src="/img/logo1.png"></a>
 			</div>
 			<div class="collapse navbar-collapse" id="MyNavbar">
 				<ul class="nav navbar-nav navbar-right">
 
-					<li class="active"><a href="#">Home</a></li>
-					<li><a href="#">About</a></li>
-					<li><a href="#">ContactUs</a></li>
-					<li><a href="#">Recipes</a></li>
+					<li class="active">
+						<a href="/">Home</a></li>
+						<li><a th:href="@{/recipes(userID=${userID})}">About</a></li>
+						<li><a th:href="@{/user(userID=${userID})}">Profile</a></li>
+						<li><a th:href="@{/admincheck(userID=${userID})}">Admin</a></li>
+						<li><a th:href="@{/user(userID=${userID})}">Logout</a></li>
+		
 			</div>
 		</div>
 	</nav>
