@@ -42,11 +42,16 @@ Home Page:
 ![screenshot 2018-12-07 16 16 48](https://user-images.githubusercontent.com/42819574/49701908-0bbf5980-fba7-11e8-8797-8d21ca4c7f31.png)
 
 
+
 User Profile:
 
 
 
 ![screenshot 2018-12-07 16 17 29](https://user-images.githubusercontent.com/42819574/49701911-17ab1b80-fba7-11e8-92eb-47ac5459da0c.png)
+
+
+
+Admin Panel:
 
 
 ![screenshot 2018-12-07 16 17 42](https://user-images.githubusercontent.com/42819574/49701912-1b3ea280-fba7-11e8-9d4a-dc972d1b8258.png)
