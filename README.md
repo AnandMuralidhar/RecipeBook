@@ -34,6 +34,9 @@ Sample Demo Screenshots:
 ![screenshot 2018-12-07 16 16 32](https://user-images.githubusercontent.com/42819574/49701904-ffd39780-fba6-11e8-88fd-4bafbc276e84.png)
 
 
+![screenshot 2018-12-07 16 16 48](https://user-images.githubusercontent.com/42819574/49701908-0bbf5980-fba7-11e8-8797-8d21ca4c7f31.png)
+
+
 
 
 
