@@ -14,7 +14,17 @@ Once the user registers and logs in using Okta SSO, the user will be redirected 
 
 Architecture Diagram:
 
-![rolebasedacess](https://user-images.githubusercontent.com/42819574/49701857-3e1c8700-fba6-11e8-8268-9faac4477e1c.jpg)
+
+
+
+
+
+
+
+
+Role-Based Access:
+
+
 
 
 
