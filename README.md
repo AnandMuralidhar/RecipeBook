@@ -24,6 +24,9 @@ Architecture Diagram:
 
 Role-Based Access:
 
+![rolebasedacess](https://user-images.githubusercontent.com/42819574/49701857-3e1c8700-fba6-11e8-8268-9faac4477e1c.jpg)
+
+
 
 
 
