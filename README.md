@@ -12,6 +12,7 @@ Recipe book is a platform for people to showcase their recipes and to browse rec
 Once the user registers and logs in using Okta SSO, the user will be redirected to the homepage wherein he/she can post, view add to favourites, or share the recipes on social media platform. The User will be able to browse the recipes and view the popular recipes thus reducing the time to find the favourite recipes.
 
 
+
 Architecture Diagram:
 
 
