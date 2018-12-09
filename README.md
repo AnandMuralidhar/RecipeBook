@@ -16,9 +16,7 @@ Architecture Diagram:
 
 
 
-
-
-
+![whatsapp image 2018-12-07 at 6 17 42 pm](https://user-images.githubusercontent.com/42819574/49702209-aec5a280-fbaa-11e8-8930-02fe37e15ed6.jpeg)
 
 
 
@@ -29,6 +27,7 @@ Role-Based Access:
 
 
 Sample Demo Screenshots:
+
 
 Okta Login Page:
 
