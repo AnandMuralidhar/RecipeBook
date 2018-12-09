@@ -43,6 +43,10 @@ Sample Demo Screenshots:
 ![screenshot 2018-12-07 16 17 42](https://user-images.githubusercontent.com/42819574/49701912-1b3ea280-fba7-11e8-9d4a-dc972d1b8258.png)
 
 
+![screenshot 2018-12-07 16 23 18](https://user-images.githubusercontent.com/42819574/49701915-2560a100-fba7-11e8-9c5c-9b1b481d5209.png)
+
+
+
 
 
 
