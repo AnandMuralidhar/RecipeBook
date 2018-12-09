@@ -19,6 +19,12 @@ Architecture Diagram:
 ![whatsapp image 2018-12-07 at 6 17 42 pm](https://user-images.githubusercontent.com/42819574/49702209-aec5a280-fbaa-11e8-8930-02fe37e15ed6.jpeg)
 
 
+Flow Diagram:
+
+
+![esp_architecture_diag 2](https://user-images.githubusercontent.com/42819574/49702252-fa784c00-fbaa-11e8-8c24-06a175a7cc74.png)
+
+
 
 Role-Based Access:
 
